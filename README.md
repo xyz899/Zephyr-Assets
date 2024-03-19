@@ -45,7 +45,7 @@ This platform is built using Hardhat, Tailwind CSS, and Next.js to offer a decen
 1. Clone the repository
 
 ```
-git clone https://github.com/Winter9998/ZephyrAssets
+git clone https://github.com/xyz899/Zephyr-Assets
 ```
 
 2. Install dependencies:
