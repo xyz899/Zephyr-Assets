@@ -29,7 +29,7 @@ const FAQ = () => {
       </span>
     </summary>
 
-    <p className="mt-4 leading-relaxed text-gray-700">
+    <p className="mt-4 leading-relaxed transition duration-300 text-gray-700">
     Tokenization involves converting ownership rights of real-world assets into digital tokens on a blockchain. Each token represents a share of the asset.
     </p>
   </details>
