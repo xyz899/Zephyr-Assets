@@ -244,7 +244,7 @@ contract AssetManager is AccessControl {
     /// @notice Removes a listing for an asset
     /// @param assetId The unique identifier of the asset to be unlisted
     /// @dev Sets the asset price to zero and updates its state to unlisted
-    function removeListing(bytes32 assetId, bytes32 userId) public isAlreadyRegistered(msg.sender) {
+    function removeListing(bytes32 assetId, bytes32 userId) public isAlreadyRegistered(msg.sender){
         require(isListed[assetId] == true, "Asset Already unlisted");
         bool isOwner;
         for (uint256 i = 0; i < userAssets[userId].length; i++) {
