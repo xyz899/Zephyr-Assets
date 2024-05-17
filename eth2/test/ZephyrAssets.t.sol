@@ -171,16 +171,19 @@ contract ZephyrTest is Test {
         assets.createNewAsset(fuzz1.addr, fuzz1UserId, "A Golden Kebab", 10, AssetManager.assetType.other);
         bytes32 assetId = assets.getAssetid(BASIC_DESCRIPTION);
         vm.stopPrank();
+
         vm.startPrank(fuzz1.addr);
         assets.createListing(assetId, fuzz1UserId, BASIC_DESCRIPTION, 15);
         assets.removeListing(assetId, fuzz1UserId);
         assertEq(assets.isListed(assetId), false);
         vm.stopPrank();
+
         vm.startPrank(fuzz2.addr);
         bytes32 fuzz2UserId = assets.getUserId();
         vm.expectRevert();
         assets.buyAsset{value: 15 ether}(assetId, fuzz2UserId, BASIC_DESCRIPTION, fuzz1UserId, fuzz1.addr);
         vm.stopPrank();
+        
         assertEq(assets.HoldingAssets(fuzz1.addr), 1);
     }
 }

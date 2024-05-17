@@ -241,6 +241,8 @@ contract AssetManager is AccessControl {
     /// @dev Records the bid and updates asset state if necessary
     function placeBid(bytes32 _assetId, bytes32 _userId, uint256 _bidAmount) public {}
 
+
+    event AssetUnlisted(bytes32 assetId, bytes32 userId);
     /// @notice Removes a listing for an asset
     /// @param assetId The unique identifier of the asset to be unlisted
     /// @dev Sets the asset price to zero and updates its state to unlisted
@@ -251,9 +253,12 @@ contract AssetManager is AccessControl {
             if (userAssets[userId][i].assetId == assetId) {
                 isOwner = true;
                 isListed[assetId] = false;
+                emit AssetUnlisted(assetId, userId);
                 break;
             }
         }
+
+        require(isOwner == true, "Caller is not the owner of the asset");
     }
 
     function removeAsset(bytes32 assetId) public {
