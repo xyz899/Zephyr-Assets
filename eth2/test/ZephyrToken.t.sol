@@ -45,3 +45,6 @@ contract ZephyrTest is Test {
         assertEq(zephyrToken.hasRole(zephyrToken.MINTER_ROLE(), admin.addr), true);
         vm.stopPrank();
     }
+
+    
+}
