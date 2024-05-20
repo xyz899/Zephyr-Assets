@@ -261,7 +261,7 @@ contract AssetManager is AccessControl {
         require(isOwner == true, "Caller is not the owner of the asset");
     }
 
-    function removeAsset(bytes32 assetId) public {
+    function removeAsset(bytes32 assetId) public view {
         require(isListed[assetId] == false, "Cannot remove Asset");
     }
 
