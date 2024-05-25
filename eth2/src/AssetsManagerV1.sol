@@ -249,6 +249,11 @@ contract AssetManager is AccessControl {
     function removeListing(bytes32 assetId, bytes32 userId) public isAlreadyRegistered(msg.sender) {
         require(isListed[assetId] == true, "Asset Already unlisted");
         bool isOwner;
+
+        // Problem here, the for loop does not pass into the userAssets array correctly and fails 
+        // to find the required asset to remove the test fails
+        // [FAIL. Reason: revert: Caller is not the owner of the asset] testRemoveListingAnAsset() (gas: 643619)
+
         for (uint256 i = 0; i < userAssets[userId].length; i++) {
             if (userAssets[userId][i].assetId == assetId) {
                 isOwner = true;
